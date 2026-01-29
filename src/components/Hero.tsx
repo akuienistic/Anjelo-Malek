@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight, Briefcase } from 'lucide-react';
-import malekProfile from '@/assets/malek-profile.jpg';
+import { motion } from "framer-motion";
+import { ChevronDown, ArrowRight, Briefcase } from "lucide-react";
+import malekProfile from "@/assets/malek-profile.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
-    const element = document.querySelector('#about');
+    const element = document.querySelector("#about");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -14,10 +14,13 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient pt-28 md:pt-20">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, hsl(42 85% 55% / 0.3) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, hsl(42 85% 55% / 0.3) 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -36,8 +39,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-4"
             >
-              Anjelo Malek{' '}
-              <span className="block">Qurino Kuoc Deng</span>
+              Anjelo Malek <span className="block">Qurino Kuoc Deng</span>
             </motion.h1>
 
             <motion.div
@@ -63,7 +65,8 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-lg md:text-xl text-primary-foreground/80 max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              Driving South Sudan's private sector growth through leadership in petroleum, real estate, and banking sectors.
+              Driving South Sudan's private sector growth through leadership in petroleum, real estate, and banking
+              sectors.
             </motion.p>
 
             <motion.div
@@ -105,16 +108,16 @@ const Hero = () => {
               <motion.div
                 className="absolute -inset-4 rounded-full border-2 border-accent/30"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
               <motion.div
                 className="absolute -inset-8 rounded-full border border-accent/20"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               />
-              
+
               {/* Image container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-accent shadow-2xl">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mb-20 rounded-full overflow-hidden border-4 border-accent shadow-2xl">
                 <img
                   src={malekProfile}
                   alt="Anjelo Malek Qurino Kuoc Deng"
@@ -135,23 +138,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.button
-        onClick={scrollToAbout}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary-foreground/60 hover:text-accent transition-colors"
-        aria-label="Scroll down"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ChevronDown size={32} />
-        </motion.div>
-      </motion.button>
     </section>
   );
 };

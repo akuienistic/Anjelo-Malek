@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -101,7 +101,6 @@ const Footer = () => {
                 className="text-accent hover:text-gold-light transition-colors font-medium inline-flex items-center gap-1"
               >
                 Simon Star Tech
-                <Linkedin size={14} />
               </a>
             </p>
           </div>
