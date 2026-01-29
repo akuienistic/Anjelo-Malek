@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
-import { Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (href: string) => {
-    if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -30,8 +30,8 @@ const Footer = () => {
               Malek <span className="text-gradient-gold">Kuoc Deng</span>
             </motion.h2>
             <p className="text-primary-foreground/70 leading-relaxed mb-6 max-w-md">
-              Business leader driving South Sudan's private sector growth through 
-              excellence in petroleum, real estate, and banking sectors.
+              Business leader driving South Sudan's private sector growth through excellence in petroleum, real estate,
+              and banking sectors.
             </p>
             <div className="flex gap-4">
               <motion.a
@@ -61,7 +61,7 @@ const Footer = () => {
           <div>
             <h3 className="font-serif text-lg font-semibold mb-4 text-accent">Quick Links</h3>
             <ul className="space-y-3">
-              {['About', 'Career', 'Education', 'Community', 'Contributions'].map((link) => (
+              {["About", "Career", "Education", "Community", "Contributions"].map((link) => (
                 <li key={link}>
                   <button
                     onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
@@ -89,11 +89,9 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-primary-foreground/50 text-sm">
-              © {currentYear} Malek Kuoc Deng. All rights reserved.
-            </p>
+            <p className="text-primary-foreground/50 text-sm">© {currentYear} Malek Kuoc Deng. All rights reserved.</p>
             <p className="text-primary-foreground/50 text-sm flex items-center gap-2">
-              Designed and Built by{' '}
+              Designed and Built by{""}
               <a
                 href="https://www.linkedin.com/in/simon-akuien-atem-710895290/"
                 target="_blank"

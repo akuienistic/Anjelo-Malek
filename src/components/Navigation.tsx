@@ -1,15 +1,18 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, User, Briefcase, GraduationCap, Users, Award, Mail } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, User, Briefcase, GraduationCap, Users, Award, Mail } from "lucide-react";
 
 const navLinks = [
-  { name: 'About', href: '#about', icon: User },
-  { name: 'Career', href: '#career', icon: Briefcase },
-  { name: 'Education', href: '#education', icon: GraduationCap },
-  { name: 'Community', href: '#community', icon: Users },
-  { name: 'Contributions', href: '#contributions', icon: Award },
-  { name: 'Contact', href: '#contact', icon: Mail },
+  { name: "About", href: "#about", icon: User },
+  { name: "Career", href: "#career", icon: Briefcase },
+  { name: "Education", href: "#education", icon: GraduationCap },
+  { name: "Community", href: "#community", icon: Users },
+  { name: "Contributions", href: "#contributions", icon: Award },
+  { name: "Contact", href: "#contact", icon: Mail },
 ];
+
+const centeredNavLinks = navLinks.slice(0, -1);
+const contactLink = navLinks[navLinks.length - 1];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,15 +22,15 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
     setIsOpen(false);
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -37,9 +40,7 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-card/95 backdrop-blur-md shadow-card'
-            : 'bg-primary/80 backdrop-blur-sm'
+          isScrolled ? "bg-card/95 backdrop-blur-md shadow-card" : "bg-primary/80 backdrop-blur-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -49,44 +50,59 @@ const Navigation = () => {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className={`font-serif text-xl md:text-2xl font-semibold transition-colors ${
-                isScrolled ? 'text-primary' : 'text-primary-foreground'
+                isScrolled ? "text-primary" : "text-primary-foreground"
               }`}
               whileHover={{ scale: 1.02 }}
             >
               Malek <span className="text-gradient-gold">Kuoc Deng</span>
             </motion.a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => {
-                const IconComponent = link.icon;
-                return (
-                  <motion.button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className={`flex items-center gap-2 text-sm font-medium transition-colors relative group ${
-                      isScrolled
-                        ? 'text-foreground/70 hover:text-primary'
-                        : 'text-primary-foreground/90 hover:text-accent'
-                    }`}
-                    whileHover={{ y: -2 }}
-                  >
-                    <IconComponent size={16} />
-                    {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-                  </motion.button>
-                );
-              })}
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex flex-1 justify-center">
+              <div className="flex items-center gap-8">
+                {centeredNavLinks.map((link) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <motion.button
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className={`flex items-center gap-2 text-sm font-medium transition-colors relative group ${
+                        isScrolled
+                          ? "text-foreground/70 hover:text-primary"
+                          : "text-primary-foreground/90 hover:text-accent"
+                      }`}
+                      whileHover={{ y: -2 }}
+                    >
+                      <IconComponent size={16} />
+                      {link.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right side: Contact */}
+            <div className="hidden md:flex items-center">
+              <motion.button
+                onClick={() => scrollToSection(contactLink.href)}
+                className={`flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-md font-medium transition-colors hover:bg-accent/90 ${
+                  isScrolled ? "" : "shadow-lg"
+                }`}
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Mail size={16} />
+                {contactLink.name}
+              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
             <motion.button
-              className={`md:hidden p-2 transition-colors ${
-                isScrolled ? 'text-primary' : 'text-primary-foreground'
-              }`}
+              className={`md:hidden p-2 transition-colors ${isScrolled ? "text-primary" : "text-primary-foreground"}`}
               onClick={() => setIsOpen(!isOpen)}
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle menu"
@@ -112,10 +128,10 @@ const Navigation = () => {
 
             {/* Menu Panel - Half Width */}
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 h-full w-1/2 bg-card shadow-2xl z-50 md:hidden"
             >
               {/* Close Button */}
