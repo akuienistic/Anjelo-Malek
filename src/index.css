@@ -122,6 +122,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: "Outfit", sans-serif !important;
@@ -134,6 +138,16 @@
   h5,
   h6 {
     font-family: "Playfair Display", serif;
+  }
+
+  /* Smooth transitions for interactive elements */
+  a, button {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Focus states */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-background;
   }
 }
 
@@ -159,5 +173,26 @@
 
   .shadow-gold {
     box-shadow: var(--shadow-gold);
+  }
+
+  /* Interactive card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:shadow-card hover:-translate-y-1;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium 
+           hover:bg-primary/90 hover:shadow-gold active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-medium
+           hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Text selection color */
+  ::selection {
+    @apply bg-gold/30 text-foreground;
   }
 }
